@@ -1,0 +1,41 @@
+<!-- src/app/livro-lista/livro-lista.component.html -->
+<main class="container mt-4">
+    <h2>Livros</h2>
+  
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Título</th>
+          <th>Resumo</th>
+          <th>Editora</th>
+          <th>Autores</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (livro of livros;track livro._id){ 
+        <tr >
+          <td>{{ livro._id }}</td>
+          <td>{{ livro.titulo }}</td>
+          <td>{{ livro.resumo }}</td>
+          <td>{{ obterNome(livro.codEditora) }}</td>
+          <td>
+            <ul>
+              @for (autores of livro.autores;track autores){
+              <li>{{ autores }}</li>
+              }
+            </ul>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="excluir(livro._id)">Excluir</button>
+          </td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2024 Seu Site. Todos os direitos reservados.</p>
+  </footer>
+  
